@@ -379,7 +379,7 @@ public class TestTomcatAuth extends UnitTestCommon
             session.setCredentialsProvider(provider);
             result = invoke(session, data.url);
             report(result,provider.counter);
-            Assert.assertTrue("Incorrect return code: " + result.status, result.status == 401);
+            Assert.assertTrue("Incorrect return code: " + result.status, result.status == 401 || result.status == 403);
             Assert.assertTrue("Credentials provider called: " + provider.counter, provider.counter == 1);
 
             // retry with correct password;
@@ -411,7 +411,7 @@ public class TestTomcatAuth extends UnitTestCommon
                 result = invoke(session, data.url);
                 report(result);
             }
-            Assert.assertTrue("Incorrect return code: " + result.status, result.status == 401);
+            Assert.assertTrue("Incorrect return code: " + result.status, result.status == 401 || result.status == 403);
             // retry with correct password;
             // AuthCache should automatically clear bad one from cache.
             try (HTTPSession session = HTTPFactory.newSession(data.url)) {

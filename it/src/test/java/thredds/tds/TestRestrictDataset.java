@@ -90,11 +90,11 @@ public class TestRestrictDataset {
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
 
-      Assert.assertEquals(401, statusCode);
+      Assert.assertTrue(statusCode == 401 || statusCode == 403);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401 err=%s%n", e.getMessage());
+      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
@@ -114,10 +114,10 @@ public class TestRestrictDataset {
 
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
-      Assert.assertEquals(401, statusCode);
+      Assert.assertTrue(statusCode == 401 || statusCode == 403);
 
     } catch (ucar.httpservices.HTTPException e) {
-      System.out.printf("Should return 401 err=%s%n", e.getMessage());
+      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
@@ -139,11 +139,11 @@ public class TestRestrictDataset {
 
       //if (statusCode != 401 && statusCode != 403)
       //  assert false;
-      Assert.assertEquals(401, statusCode);
+      Assert.assertTrue(statusCode == 401 || statusCode == 403);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401 err=%s%n", e.getMessage());
+      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
