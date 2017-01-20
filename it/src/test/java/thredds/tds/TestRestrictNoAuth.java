@@ -25,11 +25,11 @@ public class TestRestrictNoAuth {
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
 
-      Assert.assertEquals(401, statusCode);
+      Assert.assertTrue(statusCode== 401 || statusCode == 403);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401 err=%s%n", e.getMessage());
+      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
