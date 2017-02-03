@@ -1,5 +1,6 @@
 package thredds.server.services;
 
+import org.apache.http.HttpStatus;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.junit.Test;

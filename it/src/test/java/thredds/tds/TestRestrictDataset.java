@@ -32,6 +32,7 @@
  */
 package thredds.tds;
 
+import org.apache.http.HttpStatus;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.junit.Assert;
 import org.junit.Test;

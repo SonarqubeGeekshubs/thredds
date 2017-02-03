@@ -1,6 +1,7 @@
 /* Copyright */
 package thredds.tds;
 
+import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.junit.Test;
 import thredds.TestWithLocalServer;

@@ -33,6 +33,7 @@
 
 package ucar.nc2.util.net;
 
+import org.apache.http.HttpStatus;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.Credentials;
 import org.apache.http.auth.UsernamePasswordCredentials;

@@ -34,6 +34,7 @@
 package ucar.nc2.dataset;
 
 import org.apache.http.Header;
+import org.apache.http.HttpStatus;
 import thredds.client.catalog.ServiceType;
 import thredds.client.catalog.tools.DataFactory;
 import ucar.httpservices.HTTPFactory;
@@ -416,7 +417,7 @@ public class DatasetUrl {
             throw new IOException("OPeNDAP Server Error= " + method.getResponseAsString());
         }
       }
-      if (statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN)
+      if (status == HttpStatus.SC_UNAUTHORIZED || status == HttpStatus.SC_FORBIDDEN)
         throw new IOException("Unauthorized to open dataset " + location);
 
       // not dods
@@ -444,7 +445,7 @@ public class DatasetUrl {
             return ServiceType.DAP4;
         }
       }
-      if (statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN)
+      if (status == HttpStatus.SC_UNAUTHORIZED || status == HttpStatus.SC_FORBIDDEN)
         throw new IOException("Unauthorized to open dataset " + location);
 
       // not dods
