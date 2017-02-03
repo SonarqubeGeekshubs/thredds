@@ -56,7 +56,8 @@ public class TestAdminDebug {
 
     @Test public void testOpenHtmlFail() {
         String endpoint = urlPrefix + path;
-        byte[] response = TestWithLocalServer.getContent(badCred, endpoint, new int[] { 401, 403 }, ContentType.html);
+        byte[] response = TestWithLocalServer.getContent(badCred, endpoint, new int[] { HttpStatus.SC_UNAUTHORIZED, HttpStatus.SC_FORBIDDEN }, ContentType.html);
+
         if (response != null) {
             logger.debug(new String(response, CDM.utf8Charset));
         }

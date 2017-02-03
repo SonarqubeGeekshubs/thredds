@@ -25,11 +25,11 @@ public class TestRestrictNoAuth {
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
 
-      Assert.assertTrue(statusCode== 401 || statusCode == 403);
+      Assert.assertTrue(statusCode== HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
+      System.out.printf("Should return HttpStatus.SC_UNAUTHORIZED|HttpStatus.SC_FORBIDDEN err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {

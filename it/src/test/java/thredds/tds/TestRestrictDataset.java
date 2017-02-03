@@ -92,11 +92,11 @@ public class TestRestrictDataset {
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
 
-      Assert.assertTrue(statusCode == 401 || statusCode == 403);
+      Assert.assertTrue(statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
+      System.out.printf("Should return HttpStatus.SC_UNAUTHORIZED|HttpStatus.SC_FORBIDDEN err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
@@ -116,10 +116,10 @@ public class TestRestrictDataset {
 
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
-      Assert.assertTrue(statusCode == 401 || statusCode == 403);
+      Assert.assertTrue(statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN);
 
     } catch (ucar.httpservices.HTTPException e) {
-      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
+      System.out.printf("Should return HttpStatus.SC_UNAUTHORIZED|HttpStatus.SC_FORBIDDEN err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
@@ -139,13 +139,13 @@ public class TestRestrictDataset {
       HTTPMethod method = HTTPFactory.Get(session);
       int statusCode = method.execute();
 
-      //if (statusCode != 401 && statusCode != 403)
+      //if (statusCode != HttpStatus.SC_UNAUTHORIZED && statusCode != HttpStatus.SC_FORBIDDEN)
       //  assert false;
-      Assert.assertTrue(statusCode == 401 || statusCode == 403);
+      Assert.assertTrue(statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN);
 
     } catch (ucar.httpservices.HTTPException e) {
 
-      System.out.printf("Should return 401|403 err=%s%n", e.getMessage());
+      System.out.printf("Should return HttpStatus.SC_UNAUTHORIZED|HttpStatus.SC_FORBIDDEN err=%s%n", e.getMessage());
       assert false;
 
     } catch (Exception e) {
@@ -188,8 +188,8 @@ public class TestRestrictDataset {
     try {
       try (HTTPMethod method = HTTPFactory.Get(endpoint)) {
         int statusCode = method.execute();
-        if (statusCode != 401 && statusCode != 403) {
-          System.out.printf("statuscode=%d expected 401 or 403%n", statusCode);
+        if (statusCode != HttpStatus.SC_UNAUTHORIZED && statusCode != HttpStatus.SC_FORBIDDEN) {
+          System.out.printf("statuscode=%d expected HttpStatus.SC_UNAUTHORIZED or HttpStatus.SC_FORBIDDEN%n", statusCode);
           assert false;
         }
       }

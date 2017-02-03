@@ -372,7 +372,7 @@ public class DatasetUrl {
     try (HTTPMethod method = HTTPFactory.Head(location + "?req=header")) {
       int statusCode = method.execute();
       if (statusCode >= 300) {
-        if (statusCode == 401 || statusCode == 403)
+        if (statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN)
           throw new IOException("Unauthorized to open dataset " + location);
         else
           throw new IOException(location + " is not a valid URL, return status=" + statusCode);
@@ -416,7 +416,7 @@ public class DatasetUrl {
             throw new IOException("OPeNDAP Server Error= " + method.getResponseAsString());
         }
       }
-      if (status == 401 || status == 403)
+      if (statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN)
         throw new IOException("Unauthorized to open dataset " + location);
 
       // not dods
@@ -444,7 +444,7 @@ public class DatasetUrl {
             return ServiceType.DAP4;
         }
       }
-      if (status == 401 || status == 403)
+      if (statusCode == HttpStatus.SC_UNAUTHORIZED || statusCode == HttpStatus.SC_FORBIDDEN)
         throw new IOException("Unauthorized to open dataset " + location);
 
       // not dods
